@@ -52,9 +52,9 @@ public class AccountSummaryServiceImpl implements AccountSummaryService {
     
     @Value("${SERVICE_HOST}")
 	private String hostname;
-
-@Value("${SERVICE_HOST}")
-	private String hostname1;	
+	
+@Value("${SERVICE_HOST1}")
+	private String hostname1;
 
 	@Value("${summary.path}")
 	private String summaryPath;
@@ -440,7 +440,7 @@ public class AccountSummaryServiceImpl implements AccountSummaryService {
 	public boolean synchronizeLiability(String customerId) {
 		ResponseMessageVo resp = null;
 		boolean isSync = false;
-		URI targetUrl = UriComponentsBuilder.fromUriString(liabilitySyncUri).scheme("http").host(hostname1).port(liabilityPort)
+		URI targetUrl = UriComponentsBuilder.fromUriString(liabilitySyncUri).scheme("http").host(hostname).port(liabilityPort)
 				.queryParam("customerId", customerId).build().toUri();
 		LOGGER.debug("Calling URI: " + targetUrl);
 		try{
