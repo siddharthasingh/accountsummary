@@ -52,7 +52,10 @@ public class AccountSummaryServiceImpl implements AccountSummaryService {
     
     @Value("${SERVICE_HOST}")
 	private String hostname;
-	
+
+@Value("${SERVICE_HOST}")
+	private String hostname1;	
+
 	@Value("${summary.path}")
 	private String summaryPath;
 
@@ -354,7 +357,7 @@ public class AccountSummaryServiceImpl implements AccountSummaryService {
 	LOGGER.debug(AccountSummaryConstants.LOG_ENTER_METHOD + methodName + AccountSummaryConstants.LOG_OF_CLASS + CLASS_NAME);		
 	LoanAccountResponse loanSummary = null;
 
-	URI targetUrl = UriComponentsBuilder.fromUriString(liabilityBaseURI).scheme("http").host(hostname).port(liabilityPort)
+	URI targetUrl = UriComponentsBuilder.fromUriString(liabilityBaseURI).scheme("http").host(hostname1).port(liabilityPort)
 			.path(summaryPath).queryParam("customerId", customerId).build().toUri(); 	
 	LOGGER.debug("Calling URI: " + targetUrl);
     try {
@@ -437,7 +440,7 @@ public class AccountSummaryServiceImpl implements AccountSummaryService {
 	public boolean synchronizeLiability(String customerId) {
 		ResponseMessageVo resp = null;
 		boolean isSync = false;
-		URI targetUrl = UriComponentsBuilder.fromUriString(liabilitySyncUri).scheme("http").host(hostname).port(liabilityPort)
+		URI targetUrl = UriComponentsBuilder.fromUriString(liabilitySyncUri).scheme("http").host(hostname1).port(liabilityPort)
 				.queryParam("customerId", customerId).build().toUri();
 		LOGGER.debug("Calling URI: " + targetUrl);
 		try{
